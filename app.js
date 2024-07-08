@@ -5,10 +5,11 @@ const userRoutes = require('./src/routes/users');
 const organisationRoutes = require('./src/routes/organisations');
 
 const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/", (req, res)=> {
-  res.send("hello")
-})
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'home.html'));
+});
 
 app.use(express.json());
 
